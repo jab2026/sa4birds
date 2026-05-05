@@ -92,7 +92,7 @@ gdown
 Create a Python virtual environment and activate it:
 ```bash
 python3 -m venv venv
-source venv/bin/activate 
+source venv/bin/activate  # activate the virtual environment in Linux-based systems
 ```
 
 Install the required Python packages listed in **`requirements.txt`**:
@@ -120,9 +120,7 @@ BirdSet contains eight downstream tasks, each consisting of:
 
 For details see the **[BirdSet paper](https://arxiv.org/abs/2403.10380)**.
 
-Datasets are automatically downloaded via the HuggingFace `datasets` library.
-
-Example:
+BirdSet tasks will be automatically downloaded via the Hugging Face `datasets` library during the testing phase if they are not already present, using:
 
 ```python
 import datasets 
