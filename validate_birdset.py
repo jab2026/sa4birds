@@ -46,9 +46,9 @@ def parse_args():
     --mode : str, optional
         Training regime to evaluate.
         Choices:
-            - "DT" : Downstream Task models
-            - "MT" : Multi-Task models
-            - "LT" : Long-Term training models
+            - "DT" : Dedicated training models
+            - "MT" : Medium training models
+            - "LT" : Large training models
         Default: "DT"
 
     --down_task : str, optional
@@ -330,8 +330,7 @@ def build_model(cfg, device='cuda'):
     Construct and return a model instance based on the configuration.
 
     This function selects the model architecture specified in the
-    configuration and initializes it. Currently, only the "DSA"
-    classifier is supported. The constructed model is moved to the
+    configuration and initializes it. The constructed model is moved to the
     device defined in the training configuration.
 
     Args:
@@ -575,4 +574,4 @@ if __name__ == '__main__':
     args = parse_args()
     device = get_device(args.cpu)
     results = run_tasks(args.mode, args.down_task, device)
-    print(results)
+    logger.info(results)

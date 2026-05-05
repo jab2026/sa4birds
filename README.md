@@ -41,7 +41,8 @@ sa4birds/
 │   └── evaluation_birdset.ipynb            # Demonstrates evaluation on all Birdset down tasks 
 │   └── evaluation_ablation_study.ipynb     # Demonstrates ablation study experiments
 │   └── evaluation_beans.ipynb              # Demonstrates transfer learning experiments on BEANS benchmark
-
+│
+├── utils/                                 # Project utilities
 │
 ├── validate_birdset.py                     # Evaluation entry point
 │
