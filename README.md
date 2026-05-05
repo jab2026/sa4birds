@@ -70,7 +70,7 @@ After cloning the repository, navigate into the project directory:
 
 ```bash
 git clone https://github.com/jab2026/sa4birds.git
-cd sa-birds
+cd sa4birds
 ```
 
 The project relies on the following main packages (see `requirements.txt` for the complete list):
