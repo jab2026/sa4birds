@@ -69,7 +69,7 @@ This project requires **Python 3+** and a **CUDA-capable GPU with >12 GB** of VR
 After cloning the repository, navigate into the project directory:
 
 ```bash
-git clone git@github.com:jab2026/sa-birds.git
+git clone https://github.com/jab2026/sa4birds.git
 cd sa-birds
 ```
 
