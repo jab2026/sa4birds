@@ -149,8 +149,9 @@ Our pretrained checkpoints for BirdSet are available for three training regimes:
 | **MT** | Medium training                           | [Link](https://drive.google.com/drive/folders/1etfwJcpcHR5EFsmdDqCvI4e4FpxXIHEU?usp=sharing) |
 | **LT** | Large  training                           | [Link](https://drive.google.com/drive/folders/1NUpkHx5xQycIEyggsadm83c3_0_XzerX?usp=sharing) |
 
-Download the model checkpoints and place them in the `ckpts` directory, organized by training regime (`DT`, `MT`, or `LT`) with the following structure:
+Note: Google Drive may split large downloads into multiple ZIP files. After extracting them, you must manually merge the resulting folders.
 
+Download the model checkpoints and place them in the `ckpts` directory, organized by training regime (`DT`, `MT`, or `LT`) with the following structure:
 
 ```
 sa-birds/
@@ -216,13 +217,13 @@ After installing the dependencies listed in `requirements.txt` and downloading t
 
 For example, to evaluate **HSN** using the **DT** regime, run:
 ```bash
-python validate_birdset.py mode=DT downtask=HSN
+python validate_birdset.py --mode=DT --down_task=HSN
 ```
 
 To evaluate on all Birdset downtasks: 
 
 ```bash
-python validate_birdset.py mode=DT downtask=ALL
+python validate_birdset.py --mode=DT --down_task=ALL
 ```
 
 A demonstration of the evaluation on BirdSet is also provided in the notebook:
