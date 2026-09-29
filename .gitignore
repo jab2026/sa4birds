@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.ipynb_checkpoints/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Model weights are distributed separately (see README: Checkpoints).
+# ckpts/.gitkeep is tracked so the directory exists after a clone.
+ckpts/*
+!ckpts/.gitkeep
+# Release archives downloaded into the project root
+sa4birds-*.tar
+
+# The edge app's ONNX export ...
+apps/edge/model/
+# ... and the wheels pre-downloaded for an offline edge install.
+apps/edge/wheels/
+
+# Local compose settings (host paths); .env.example is the tracked template.
+.env

@@ -1,0 +1,29 @@
+# Serving dependencies for app.py -- deliberately torch-free. The model runs via
+# onnxruntime; the log-mel frontend is librosa/numpy (app.py's _mel_db), matching
+# the torchaudio pipeline the model was trained with to float32 precision.
+# Needs Python 3.11 or 3.12.
+librosa==0.11.0
+numpy<2
+pandas==3.0.2
+pillow==12.2.0
+gradio==6.26.0
+
+# --- GPU vs CPU: uncomment exactly one of the two blocks below -----------------
+#
+# CPU only (simplest -- no CUDA/cuDNN version to match):
+onnxruntime==1.29.0
+#
+# GPU (see README.md's "GPU support"): onnxruntime-gpu does NOT pull CUDA/cuDNN,
+# so the nvidia-*-cu12 lines below are required, and their major versions must
+# match this onnxruntime-gpu release (1.19-1.22 target CUDA 12 + cuDNN 9;
+# 1.29 wants CUDA 13; 1.17-1.18 want CUDA 11):
+# onnxruntime-gpu==1.20.2
+# nvidia-cudnn-cu12>=9,<10
+# nvidia-cublas-cu12
+# nvidia-cuda-runtime-cu12
+# nvidia-cufft-cu12
+# nvidia-curand-cu12
+# nvidia-cusolver-cu12
+# nvidia-cusparse-cu12
+# nvidia-nvjitlink-cu12
+

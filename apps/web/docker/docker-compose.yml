@@ -1,0 +1,42 @@
+# Run apps/web in a container. See ../README.md for the venv alternative.
+#
+#   cd docker
+#   SA4BIRDS_MODEL=../../../ckpts/onnx/ssa_LT_seed1 docker compose up --build
+#
+# SA4BIRDS_MODEL is required and points at an ONNX export directory (the
+# release's sa4birds-LT-SSA-onnx.tar, or an ../../../export_onnx.py output); no
+# weights are baked into the image. A RELATIVE path is
+# resolved against this file's directory, so the project root is ../../.. -- an
+# absolute path avoids the ambiguity. Optional: SA4BIRDS_PORT.
+
+name: sa4birds-web
+
+services:
+  web:
+    build:
+      context: ..                     # app.py, requirements.txt and reference/ live there
+      dockerfile: docker/Dockerfile
+    image: sa4birds-web:latest
+    container_name: sa4birds-web
+
+    volumes:
+      - ${SA4BIRDS_MODEL:?set SA4BIRDS_MODEL to an ONNX export directory, e.g. ../../../ckpts/onnx/ssa_LT_seed1}:/model:ro
+
+    ports:
+      - "${SA4BIRDS_PORT:-7860}:7860"
+
+    tmpfs:
+      - /tmp
+
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://127.0.0.1:7860/', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s              # model load takes ~10-30s on CPU
+
+    restart: unless-stopped
+
+# GPU needs a rebuild, not just a flag: switch requirements.txt to the
+# onnxruntime-gpu block and add deploy.resources.reservations.devices here.

@@ -1,0 +1,16 @@
+# Host build products and documentation -- none of it is read at runtime, and
+# venv/ alone is ~5 GB, which would otherwise be sent to the daemon as build
+# context on every build.
+venv/
+__pycache__/
+*.py[cod]
+
+figures/
+README.md
+
+# Weights are mounted at /model, never copied in (see docker-compose.yml).
+*.onnx
+*.onnx.data
+
+.idea/
+.vscode/

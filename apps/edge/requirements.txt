@@ -1,0 +1,13 @@
+# Minimal, on-device dependencies for edge_predict.py -- no gradio, no pandas, no
+# pillow: those are for apps/web/app.py's interactive UI, not a headless CLI tool.
+# CPU-only onnxruntime (no CUDA-capable GPU exists on a Raspberry Pi); see
+# edge_predict.py's select_providers if deploying to a GPU-capable ARM board
+# instead (e.g. a Jetson) -- swap this for onnxruntime-gpu there.
+#
+# numpy<2 is required: the only onnxruntime wheel PyPI publishes for
+# linux/aarch64 + Python 3.9 is 1.16.3, compiled against numpy's 1.x ABI; with
+# numpy>=2 it fails at import with "AttributeError: _ARRAY_API not found".
+onnxruntime
+librosa
+numpy<2
+soundfile
